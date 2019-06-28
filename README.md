@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+> 이 예제는 Github pages를 이용해 React app을 호스팅 하는 샘플입니다.
+	> 아래 github 사이트를 참고하여 생산 되었습니다.
+	__https://github.com/gitname/react-gh-pages__
+	
+	
+	## github pages에 hosting 하는 핵심은
+	1. github에 project를 생성
+	2. http://{username}.github.io/{repo-name} 으로 page에 접근 가능 (index.html이 없으므로 아직 404 error )
+	3. CRA를 통해 React App 생성
+	4. gh-pages dependancy를 추가
+	``` command
+	$ npm install gh-pages --save-dev
+	```
+	5. package.json 에 homepage 주소 추가
+	``` json
+	"homepage": "http://yesnokim.github.io/react-gh-pages"
+	```
+	6. package.json 의 __script__에 아래 ___predeploy___, ___deploy property___ 추가
+	```json
+	"scripts": {
+	  //...
+	  "predeploy": "npm run build",
+	  "deploy": "gh-pages -d build"
+	}
+	```
+	7. git repository 생성 및 Github repo를 remote로 local git repo에 연결
+	```shell
+	$ git init
+	$ git remote add origin https://github.com/yesnokim/react-gh-pages.git
+	```
+	8. deploy 수행
+	```shell
+	$ npm run deploy
+	```
+	9. 이제 http://yesnokim.github.io/react-gh-pages 접속 가능
+	10. (Optional) Source code를 master에 commit 후 Github origin에 push
+	```
+	$ git add .
+	$ git commit -m "Create a React app and publish it to GitHub Pages"
+	$ git push origin master
+	```
