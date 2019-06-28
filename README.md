@@ -11,7 +11,7 @@ __https://github.com/gitname/react-gh-pages__
 ``` command
 $ npm install gh-pages --save-dev
 ```
-5. package.json 에 homepage 주소 추가
+5. package.json 에 ___homepage___ 주소 추가
 ``` json
 "homepage": "http://yesnokim.github.io/react-gh-pages"
 ```
