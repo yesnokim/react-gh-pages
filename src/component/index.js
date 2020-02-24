@@ -1,4 +1,4 @@
-import Sample from './sample/sample';
+import Sample from './sample/Sample';
 
 export {
     Sample
